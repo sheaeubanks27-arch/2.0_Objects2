@@ -39,10 +39,14 @@ public class BasicGameApp implements Runnable {
    
 	public BufferStrategy bufferStrategy;
 	public Image astroPic;
+    public Image fishPic;
+    public Image octopusPic;
+    public Image whalePic;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
 	private Astronaut astro;
+    private Fish flip;
 
 
    // Main method definition
@@ -63,8 +67,12 @@ public class BasicGameApp implements Runnable {
        
       //variable and objects
       //create (construct) the objects needed for the game and load up 
-		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
+		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png");//load the picture
+        fishPic = Toolkit.getDefaultToolkit().getImage("bluefish.png");
+        octopusPic = Toolkit.getDefaultToolkit().getImage("octopus.png");
+        whalePic = Toolkit.getDefaultToolkit().getImage("whale.png");
 		astro = new Astronaut(10,100);
+        flip = new Fish(30,10);
 
 
 	}// BasicGameApp()
@@ -144,6 +152,7 @@ public class BasicGameApp implements Runnable {
 
       //draw the image of the astronaut
 		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
+        g.drawImage(fishPic, flip.xpos, flip.ypos, flip.width, flip.height ,null);
 
 		g.dispose();
 
