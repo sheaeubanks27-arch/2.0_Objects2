@@ -42,11 +42,14 @@ public class BasicGameApp implements Runnable {
     public Image fishPic;
     public Image octopusPic;
     public Image whalePic;
+    public Image backgroundPic;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
 	private Astronaut astro;
     private Fish flip;
+    private Whale whl;
+    private Octopus octo;
 
 
    // Main method definition
@@ -71,8 +74,11 @@ public class BasicGameApp implements Runnable {
         fishPic = Toolkit.getDefaultToolkit().getImage("bluefish.png");
         octopusPic = Toolkit.getDefaultToolkit().getImage("octopus.png");
         whalePic = Toolkit.getDefaultToolkit().getImage("whale.png");
+        backgroundPic = Toolkit.getDefaultToolkit().getImage("ocean.jpg");
 		astro = new Astronaut(10,100);
         flip = new Fish(30,10);
+        whl = new Whale(200,5);
+        octo = new Octopus(300,10);
 
 
 	}// BasicGameApp()
@@ -101,6 +107,9 @@ public class BasicGameApp implements Runnable {
 	{
       //calls the move( ) code in the objects
 		astro.move();
+        flip.move();
+        whl.move();
+        octo.move();
 
 	}
 	
@@ -149,10 +158,13 @@ public class BasicGameApp implements Runnable {
 	private void render() {
 		Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
 		g.clearRect(0, 0, WIDTH, HEIGHT);
+        g.drawImage(backgroundPic,0, 0, WIDTH, HEIGHT, null);
 
       //draw the image of the astronaut
 		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
         g.drawImage(fishPic, flip.xpos, flip.ypos, flip.width, flip.height ,null);
+        g.drawImage(whalePic, whl.xpos, whl.ypos, whl.width, whl.height, null);
+        g.drawImage(octopusPic, octo.xpos, octo.ypos, octo.width, octo.height, null);
 
 		g.dispose();
 
