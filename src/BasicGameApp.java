@@ -43,6 +43,7 @@ public class BasicGameApp implements Runnable {
     public Image octopusPic;
     public Image whalePic;
     public Image backgroundPic;
+    public Image netPic;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
@@ -50,6 +51,7 @@ public class BasicGameApp implements Runnable {
     private Fish flip;
     private Whale whl;
     private Octopus octo;
+    private Net n;
 
 
    // Main method definition
@@ -75,10 +77,12 @@ public class BasicGameApp implements Runnable {
         octopusPic = Toolkit.getDefaultToolkit().getImage("octopus.png");
         whalePic = Toolkit.getDefaultToolkit().getImage("whale.png");
         backgroundPic = Toolkit.getDefaultToolkit().getImage("ocean.jpg");
+        netPic = Toolkit.getDefaultToolkit().getImage("net.png");
 		astro = new Astronaut(10,100);
         flip = new Fish(30,10);
         whl = new Whale(200,5);
         octo = new Octopus(300,10);
+        n = new Net(500,350);
 
 
 	}// BasicGameApp()
@@ -110,6 +114,8 @@ public class BasicGameApp implements Runnable {
         flip.move();
         whl.move();
         octo.move();
+        n.move();
+
 
 	}
 	
@@ -165,6 +171,7 @@ public class BasicGameApp implements Runnable {
         g.drawImage(fishPic, flip.xpos, flip.ypos, flip.width, flip.height ,null);
         g.drawImage(whalePic, whl.xpos, whl.ypos, whl.width, whl.height, null);
         g.drawImage(octopusPic, octo.xpos, octo.ypos, octo.width, octo.height, null);
+        g.drawImage(netPic, n.xpos, n.ypos, n.width, n.height, null);
 
 		g.dispose();
 
