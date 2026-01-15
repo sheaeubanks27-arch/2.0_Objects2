@@ -177,4 +177,8 @@ public class BasicGameApp implements Runnable {
 
 		bufferStrategy.show();
 	}
+
+    public void spray(){
+
+    }
 }
