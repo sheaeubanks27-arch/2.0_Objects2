@@ -110,7 +110,7 @@ public class BasicGameApp implements Runnable {
 	public void moveThings()
 	{
       //calls the move( ) code in the objects
-		astro.move();
+		//astro.move();
         flip.move();
         whl.move();
         octo.move();
@@ -167,7 +167,7 @@ public class BasicGameApp implements Runnable {
         g.drawImage(backgroundPic,0, 0, WIDTH, HEIGHT, null);
 
       //draw the image of the astronaut
-		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
+		//g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
         g.drawImage(fishPic, flip.xpos, flip.ypos, flip.width, flip.height ,null);
         g.drawImage(whalePic, whl.xpos, whl.ypos, whl.width, whl.height, null);
         g.drawImage(octopusPic, octo.xpos, octo.ypos, octo.width, octo.height, null);
@@ -179,6 +179,14 @@ public class BasicGameApp implements Runnable {
 	}
 
     public void spray(){
+
+        if(octo.hitbox.intersects(flip.hitbox)){
+
+        }
+
+        if (octo.hitbox.intersects(whl.hitbox)){
+
+        }
 
     }
 }

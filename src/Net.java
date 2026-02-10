@@ -12,6 +12,7 @@ public class Net {
     public int dy;
     public Rectangle hitbox;
 
+
     public Net(int pXpos, int pYpos) {
 
         xpos = pXpos;
