@@ -11,6 +11,7 @@ public class Fish{
     public int dx;
     public int dy;
     public Rectangle hitbox;
+    public boolean isCaught;
 
     public Fish (int pXpos, int pYpos){
         xpos = pXpos;
@@ -18,8 +19,8 @@ public class Fish{
         width = 60;
         height = 60;
         isAlive = true;
-        dx = 7;
-        dy = 7;
+        dx = 3;
+        dy = 3;
         hitbox = new Rectangle(xpos,ypos,width,height);
 
     }

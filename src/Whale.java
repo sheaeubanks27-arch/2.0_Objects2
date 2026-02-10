@@ -11,6 +11,7 @@ public class Whale {
     public int dx;
     public int dy;
     public Rectangle hitbox;
+    public boolean isCaught;
 
     public Whale (int pXpos, int pYpos){
         xpos = pXpos;

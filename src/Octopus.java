@@ -10,6 +10,7 @@ public class Octopus {
     public int dx;
     public int dy;
     public Rectangle hitbox;
+    public boolean isCaught;
 
     public Octopus (int pXpos, int pYpos){
         xpos = pXpos;

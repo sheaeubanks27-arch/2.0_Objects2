@@ -44,6 +44,8 @@ public class BasicGameApp implements Runnable {
     public Image whalePic;
     public Image backgroundPic;
     public Image netPic;
+    public Image fishPic2;
+    public Image whalePic2;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
@@ -61,13 +63,13 @@ public class BasicGameApp implements Runnable {
 		new Thread(ex).start();                 //creates a threads & starts up the code in the run( ) method  
 	}
 
-
    // Constructor Method
    // This has the same name as the class
    // This section is the setup portion of the program
    // Initialize your variables and construct your program objects here.
 	public BasicGameApp() {
-      
+        int randx = (int)(Math.random()*999)+1;
+        int randy = (int)(Math.random()*699)+1;
       setUpGraphics();
        
       //variable and objects
@@ -78,11 +80,13 @@ public class BasicGameApp implements Runnable {
         whalePic = Toolkit.getDefaultToolkit().getImage("whale.png");
         backgroundPic = Toolkit.getDefaultToolkit().getImage("ocean.jpg");
         netPic = Toolkit.getDefaultToolkit().getImage("net.png");
-		astro = new Astronaut(10,100);
-        flip = new Fish(30,10);
-        whl = new Whale(200,5);
-        octo = new Octopus(300,10);
+		//astro = new Astronaut(10,100);
+        flip = new Fish(randx,randy);
+        whl = new Whale(randx,randy);
+        octo = new Octopus(randx,randy);
         n = new Net(500,350);
+        fishPic2 = Toolkit.getDefaultToolkit().getImage("blackfish.png");
+        whalePic2 = Toolkit.getDefaultToolkit().getImage("blackwhale.png");
 
 
 	}// BasicGameApp()
@@ -115,6 +119,8 @@ public class BasicGameApp implements Runnable {
         whl.move();
         octo.move();
         n.move();
+        catching();
+        spray();
 
 
 	}
@@ -168,10 +174,11 @@ public class BasicGameApp implements Runnable {
 
       //draw the image of the astronaut
 		//g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
+        g.drawImage(netPic, n.xpos, n.ypos, n.width, n.height, null);
+
         g.drawImage(fishPic, flip.xpos, flip.ypos, flip.width, flip.height ,null);
         g.drawImage(whalePic, whl.xpos, whl.ypos, whl.width, whl.height, null);
         g.drawImage(octopusPic, octo.xpos, octo.ypos, octo.width, octo.height, null);
-        g.drawImage(netPic, n.xpos, n.ypos, n.width, n.height, null);
 
 		g.dispose();
 
@@ -181,12 +188,37 @@ public class BasicGameApp implements Runnable {
     public void spray(){
 
         if(octo.hitbox.intersects(flip.hitbox)){
+            fishPic = fishPic2;
 
         }
 
         if (octo.hitbox.intersects(whl.hitbox)){
+            whalePic = whalePic2;
 
         }
 
+    }
+
+    public void catching(){
+        if(flip.isCaught=true){
+            n.xpos = flip.xpos;
+            n.ypos = flip.ypos;
+        }
+
+        if(octo.isCaught=true){
+            n.xpos = octo.xpos;
+            n.ypos = octo.ypos;
+        }
+
+        if(whl.isCaught=true){
+            n.xpos= whl.xpos;
+            n.ypos = whl.ypos;
+        }
+    }
+
+    public void eating(){
+        if(whl.hitbox.intersects(flip.hitbox)){
+
+        }
     }
 }
