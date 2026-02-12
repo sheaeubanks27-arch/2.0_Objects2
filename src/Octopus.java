@@ -18,8 +18,8 @@ public class Octopus {
         width = 60;
         height = 60;
         isAlive = true;
-        dx = 5;
-        dy = 5;
+        dx = 1;
+        dy = 1;
         hitbox = new Rectangle(xpos,ypos,width,height);
 
     }

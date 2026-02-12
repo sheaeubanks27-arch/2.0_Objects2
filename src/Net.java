@@ -21,7 +21,7 @@ public class Net {
         height = 350;
         isAlive = true;
         dx = 0;
-        dy = 7;
+        dy = 1;
         hitbox = new Rectangle(xpos, ypos, width, height);
 
 

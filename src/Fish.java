@@ -19,15 +19,14 @@ public class Fish{
         width = 60;
         height = 60;
         isAlive = true;
-        dx = 3;
-        dy = 3;
+        dx = 1;
+        dy = 1;
         hitbox = new Rectangle(xpos,ypos,width,height);
+
 
     }
 
     public void move() {
-       // xpos = xpos + dx;
-        //ypos = ypos + dy;
         if(xpos >= 1000-width){//bounce off the right wall
             dx = -dx;
 

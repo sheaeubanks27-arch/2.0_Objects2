@@ -20,14 +20,14 @@ public class Whale {
         height = 300;
         isAlive = true;
         dx = 1;
-        dy = 0;
+        dy = 1;
         hitbox = new Rectangle(xpos,ypos,width,height);
+
 
     }
 
     public void move() {
-       // xpos = xpos + dx;
-        //ypos = ypos + dy;
+
 
         if(xpos >= 1000){//wrap when hits right wall
             xpos = 1;
