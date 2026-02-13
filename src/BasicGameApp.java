@@ -70,6 +70,7 @@ public class BasicGameApp implements Runnable {
     // This section is the setup portion of the program
     // Initialize your variables and construct your program objects here.
     public BasicGameApp() {
+        //random numbers x and y that I used for coordinates
         int randx = (int) (Math.random() * 999) + 1;
         int randy = (int) (Math.random() * 699) + 1;
         setUpGraphics();
@@ -82,9 +83,8 @@ public class BasicGameApp implements Runnable {
         whalePic = Toolkit.getDefaultToolkit().getImage("whale.png");
         backgroundPic = Toolkit.getDefaultToolkit().getImage("ocean.jpg");
         netPic = Toolkit.getDefaultToolkit().getImage("net.png");
-        //astro = new Astronaut(10,100);
         flip = new Fish(700, 200);
-        whl = new Whale(0, 300);
+        whl = new Whale(700, 300);
         octo = new Octopus(randx, randy);
         n = new Net(100, 70);
         fishPic2 = Toolkit.getDefaultToolkit().getImage("blackfish.png");
@@ -176,12 +176,12 @@ public class BasicGameApp implements Runnable {
         g.drawImage(backgroundPic, 0, 0, WIDTH, HEIGHT, null);
         //draw the image of the net
         g.drawImage(netPic, n.xpos, n.ypos, n.width, n.height, null);
-        //draws the fish image only when the fish is alive(disapears when eaten)
+        //draws the fish image only when the fish is alive(disappears when eaten)
         if (flip.isAlive == true) {
             g.drawImage(fishPic, flip.xpos, flip.ypos, flip.width, flip.height, null);
         }       //draws whale image
         g.drawImage(whalePic, whl.xpos, whl.ypos, whl.width, whl.height, null);
-        //draws the octopus image only when the octopus is alive(disapears when eaten)
+        //draws the octopus image only when the octopus is alive(disappears when eaten)
         if (octo.isAlive == true) {
             g.drawImage(octopusPic, octo.xpos, octo.ypos, octo.width, octo.height, null);
         }
@@ -192,91 +192,75 @@ public class BasicGameApp implements Runnable {
 
     //a method that makes it look like the octopus sprayed ink and turned the whale and fish black
     public void spray() {
-
         if (octo.hitbox.intersects(flip.hitbox)) {
             fishPic = fishPic2;
-            if( print == 1) {
-                System.out.println("The octopus sprayed the fish");
-            }
+            print++;
+
         }
 
 
 
         if (octo.hitbox.intersects(whl.hitbox)) {
             whalePic = whalePic2;
-            if(print == 1) {
-                System.out.println("The octopus sprayed the whale");
-            }
             }
 
     }
-
+    //a method that makes the net catch the other characters
     public void catching() {
         if (n.hitbox.intersects(flip.hitbox) ) {
             flip.xpos = n.xpos;
             flip.ypos = n.ypos;
             flip.isCaught = true;
-            if(print == 1) {
-                System.out.println("The fish has been caught");
-            }
+
+
             }
 
-//        if (!n.hitbox.intersects(flip.hitbox)) {
-//            flip.isCaught = false;
-//        }
 
-        if (n.hitbox.intersects(octo.hitbox) && octo.isCaught == false) {
+        if (n.hitbox.intersects(octo.hitbox)) {
             octo.xpos = n.xpos;
             octo.ypos = n.ypos;
             octo.isCaught = true;
-           if(print == 1) {
-               System.out.println("The octopus has been caught");
-           }
+
+
         }
 
-       // if (!n.hitbox.intersects(octo.hitbox)) {
-            //octo.isCaught = false;
 
         if (n.hitbox.intersects(whl.hitbox) ) {
 
             whl.xpos = n.xpos;
             whl.ypos = n.ypos;
             whl.isCaught = true;
-            print++;
-            if (print==1){
-                System.out.println("The whale has been caught");
 
-            }
+
+
         }
 
-//        if (!n.hitbox.intersects(whl.hitbox)) {
-//            whl.isCaught = false;
-//        }
     }
-
+        // a method that makes the whale eat the octopus and fish and gets rid of their images when it happens
         public void eating() {
-            if (whl.hitbox.intersects(flip.hitbox)) {
+        if (whl.hitbox.intersects(flip.hitbox)) {
                 whl.dy = -whl.dy;
                 flip.dy = -flip.dy;
                 flip.isAlive = false;
-                if (print == 1) {
-                    System.out.println("The whale ate the fish");
-                }
-            }
 
 
-            if (whl.hitbox.intersects(octo.hitbox)) {
-                whl.dy = -whl.dy;
-                octo.dy = -octo.dy;
-                octo.isAlive = false;
             }
+        if(whl.hitbox.intersects(octo.hitbox)){
+            whl.dy = -whl.dy;
+            octo.dy = - octo.dy;
+            octo.isAlive = false;
         }
 
+
+            }
+
+        //prints a message when the life cycle has been completed
         public void endMessage () {
             if (octo.isAlive == false && flip.isAlive == false && whl.isCaught == true) {
-                if (print == 1) {
-                    System.out.println("The life cycle has been completed");
-                }
-                }
+
+                System.out.println("The life cycle has been completed");
+
+            }
         }
     }
+

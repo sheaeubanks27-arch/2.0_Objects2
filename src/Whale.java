@@ -25,7 +25,7 @@ public class Whale {
 
 
     }
-
+    //method that makes the whale move
     public void move() {
 
 
@@ -50,6 +50,7 @@ public class Whale {
 
         xpos = xpos + dx;
         ypos = ypos + dy;
+        //makes the boundary around the whale
         hitbox = new Rectangle(xpos,ypos,width,height);
 
     }

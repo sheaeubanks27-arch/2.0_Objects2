@@ -23,7 +23,7 @@ public class Octopus {
         hitbox = new Rectangle(xpos,ypos,width,height);
 
     }
-
+    //method that makes the octopus move
     public void move() {
         //xpos = xpos + dx;
        // ypos = ypos + dy;
@@ -33,16 +33,16 @@ public class Octopus {
         }
 
 
-        if(xpos <=0){
+        if(xpos <=0){//bounce off the left wall
             dx = -dx;
         }
 
 
-        if(ypos >= 700-height){
+        if(ypos >= 700-height){//bounce off the bottom wall
             dy = -dy;
         }
 
-        if(ypos <=0){
+        if(ypos <=0){//bounce off the top wall
             dy = -dy;
         }
         xpos = xpos + dx;

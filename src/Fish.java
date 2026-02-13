@@ -25,7 +25,7 @@ public class Fish{
 
 
     }
-
+//method that makes the fish move
     public void move() {
         if(xpos >= 1000-width){//bounce off the right wall
             dx = -dx;
@@ -33,20 +33,21 @@ public class Fish{
         }
 
 
-        if(xpos <=0){
+        if(xpos <=0){//bounce off left wall
             dx = -dx;
         }
 
 
-        if(ypos >= 700-height){
+        if(ypos >= 700-height){//bounce off bottom wall
             dy = -dy;
         }
 
-        if(ypos <=0){
+        if(ypos <=0){//bounce off top wall
             dy = -dy;
         }
         xpos = xpos + dx;
         ypos = ypos + dy;
+        //makes the boundary around the fish
         hitbox = new Rectangle(xpos,ypos,width,height);
 
     }

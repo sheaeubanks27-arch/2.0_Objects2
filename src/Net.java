@@ -26,30 +26,19 @@ public class Net {
 
 
     }
-
+    //method that makes the net move
     public void move() {
-        // xpos = xpos + dx;
-        //ypos = ypos + dy;
-        if (xpos >= 1000 - width) {//bounce off the right wall
-            dx = -dx;
 
-        }
-
-
-        if (xpos <= 0) {
-            dx = -dx;
-        }
-
-
-        if (ypos >= 700 - height) {
+        if (ypos >= 700 - height) {//bounce off bottom wall
             dy = -dy;
         }
 
-        if (ypos <= 0) {
+        if (ypos <= 0) {//bounce off top wall
             dy = -dy;
         }
         xpos = xpos + dx;
         ypos = ypos + dy;
+        //makes the boundary around the net
         hitbox = new Rectangle(xpos, ypos, width, height);
     }
 }
